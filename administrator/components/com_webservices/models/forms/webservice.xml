@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+
+<form>
+    <fieldset>
+        <field
+              name="id"
+              type='hidden'
+        />
+        
+        <field
+            name='name'                
+            type="text"
+            label="Service Name"
+            size="30"
+            class="inputbox"
+            required='true'
+        />
+        
+        <field
+            name='publicKey'
+            type='text'
+            label='public key'
+            size='100'
+            class='inputbox'
+            
+         />
+            
+        <field
+            name='privateKey'
+            type='text'
+            label='private key'
+            size='100'
+            class='inputbox'
+            
+         />
+        
+        <field
+            name='otherKeys'
+            type='text'
+            label='other keys'
+            size='1000'
+            class='inputbox'
+            
+         />
+        
+        
+    </fieldset>      
+</form>
