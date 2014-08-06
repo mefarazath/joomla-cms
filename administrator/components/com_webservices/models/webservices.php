@@ -23,5 +23,51 @@ class WebServicesModelWebServices extends JModelList
     }
     
     
+    // return the list of web services from the file
+    function getItems() {
+        
+        //create a registry object
+        $registry = Joomla\Registry\Registry::getInstance(1);
+        
+        // check whether the json file exists
+        if(!file_exists('webservices.json'))
+        {
+            $this->_errors = 'Web Services File Not Found';
+            return false;
+        }
+        
+        //load the webservices.json file into the Registry object
+        $registry->loadFile('webservices.json');
+        
+        //convert the registry into an array 
+        $registryArray = $registry->toArray();
+        
+        // retrieve the services from the registry array in the 'service'=>array(params)
+        $services = $registryArray['webservices'];
+      //  print_r($services);
+        //create the list to be returned to the view
+        $items = array();
+        
+        // convert each service to a list item
+        foreach($services as $key=>$value)
+        {
+            // get the parameters of the services
+           $params = $value;
+        
+           $registry = Joomla\Registry\Registry::getInstance(hash('md5', $key));
+           
+           // load the parameters onto a registry object
+           $registry->loadArray($params);    
+           
+           // convert the registry object onto an item object and insert it to items
+            $items[] = $registry->toObject();      
+        }
+
+        return $items;
+    }
+    
+ 
+    
+    
     
 }

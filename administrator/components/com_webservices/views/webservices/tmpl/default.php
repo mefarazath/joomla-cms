@@ -17,10 +17,13 @@ JHtml::_('behavior.tooltip');
 <form action="<?php echo JRoute::_('index.php?option=com_webservices'); ?>" method="post" name="adminForm" id="adminForm">
     <?php
        foreach($this->items as $i=>$item):
-        echo JHtmlGrid::id($i,$item->id);
-        echo $item->id."  ".$item->name."   ".$item->publicKey."<br>";
-
-       endforeach;
+           
+            echo JHtmlGrid::id($i, $item->name);
+         // echo $item->id."  ".$item->name."   ".$item->publicKey."<br>";
+            echo " ".$item->name . "        " . $item->publickey;
+            echo "<br>";
+            
+    endforeach;
         ?>
        <div>
             <input type="hidden" name="task" value=""/>

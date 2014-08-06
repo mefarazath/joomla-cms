@@ -40,9 +40,9 @@ and open the template in the editor.
          />
         
         <field
-            name='otherKeys'
+            name='passPhrase'
             type='text'
-            label='other keys'
+            label='pass phrase'
             size='1000'
             class='inputbox'
             

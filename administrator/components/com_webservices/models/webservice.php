@@ -22,11 +22,10 @@ class WebServicesModelWebService extends JModelAdmin
         
        //load the form from the xml file
        $form = $this->loadForm('com_webservices.webservice','webservice', array('control'=>'jform','load_data'=>$loadData));
-     
+
        // check whether the form creation was successful
        if(empty($form))
-       {
-           
+       {         
            return false;
        }
        
@@ -43,9 +42,16 @@ class WebServicesModelWebService extends JModelAdmin
        {
            $data = $this->getItem();
        }
+       
        print_r($data);
        return $data;
    }
-    
-    
+   
+   function save($data) {
+       parent::save($data);
+       
+     //  print_r($data);
+       
+       return true;
+   }
 }
