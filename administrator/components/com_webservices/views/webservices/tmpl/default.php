@@ -20,7 +20,7 @@ JHtml::_('behavior.tooltip');
            
             echo JHtmlGrid::id($i, $item->name);
          // echo $item->id."  ".$item->name."   ".$item->publicKey."<br>";
-            echo " ".$item->name . "        " . $item->publickey;
+            echo " ".$item->name . "        " . $item->publicKey;
             echo "<br>";
             
     endforeach;

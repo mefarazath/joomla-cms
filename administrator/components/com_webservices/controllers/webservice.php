@@ -1,5 +1,5 @@
 <?php
-require 'Record.php';
+//require 'Record.php';
 //use Record\Record;
 use Joomla\Registry\Registry;
 

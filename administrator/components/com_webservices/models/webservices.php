@@ -44,7 +44,7 @@ class WebServicesModelWebServices extends JModelList
         
         // retrieve the services from the registry array in the 'service'=>array(params)
         $services = $registryArray['webservices'];
-      //  print_r($services);
+        
         //create the list to be returned to the view
         $items = array();
         
@@ -54,13 +54,11 @@ class WebServicesModelWebServices extends JModelList
             // get the parameters of the services
            $params = $value;
         
-           $registry = Joomla\Registry\Registry::getInstance(hash('md5', $key));
-           
+           $registry = new JRegistry;
            // load the parameters onto a registry object
-           $registry->loadArray($params);    
-           
+           $registry->loadArray($params);         
            // convert the registry object onto an item object and insert it to items
-            $items[] = $registry->toObject();      
+            $items[] = $registry->toObject();  
         }
 
         return $items;
