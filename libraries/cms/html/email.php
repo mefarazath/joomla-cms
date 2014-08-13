@@ -45,7 +45,7 @@ abstract class JHtmlEmail
 		$rand = rand(1, 100000);
 
 		$replacement = '<span id="cloak' . $rand . '">' . JText::_('JLIB_HTML_CLOAKING') . '</span>' . "<script type='text/javascript'>";
-		$replacement .= "\n <!--";
+		$replacement .= "\n //<!--";
 		$replacement .= "\n document.getElementById('cloak$rand').innerHTML = '';";
 		$replacement .= "\n var prefix = '&#109;a' + 'i&#108;' + '&#116;o';";
 		$replacement .= "\n var path = 'hr' + 'ef' + '=';";
@@ -82,11 +82,11 @@ abstract class JHtmlEmail
 		}
 		else
 		{
-			$replacement .= "\n document.getElementById('cloak$rand').innerHTML += 'addy" . $rand . "';";
+			$replacement .= "\n document.getElementById('cloak$rand').innerHTML += addy" . $rand . ";";
 		}
 
 		$replacement .= "\n //-->";
-		$replacement .= '\n </script>';
+		$replacement .= "\n </script>";
 
 		return $replacement;
 	}
