@@ -583,6 +583,12 @@ abstract class JFormField
 		// Set the visibility.
 		$this->hidden = ($this->hidden || (string) $element['type'] == 'hidden');
 
+		// Add required to class list if field is required.
+		if ($this->required)
+		{
+			$this->class = trim($this->class . ' required');
+		}
+
 		return true;
 	}
 
@@ -712,6 +718,9 @@ abstract class JFormField
 		$text = $this->element['label'] ? (string) $this->element['label'] : (string) $this->element['name'];
 		$text = $this->translateLabel ? JText::_($text) : $text;
 
+		// Forcing the Alias field to display the tip below
+		$position = $this->element['name'] == 'alias' ? ' data-placement="bottom" ' : '';
+
 		$description = ($this->translateDescription && !empty($this->description)) ? JText::_($this->description) : $this->description;
 
 		$displayData = array(
@@ -719,7 +728,8 @@ abstract class JFormField
 				'description' => $description,
 				'for'         => $this->id,
 				'required'    => (bool) $this->required,
-				'classes'     => explode(' ', $this->labelclass)
+				'classes'     => explode(' ', $this->labelclass),
+				'position'    => $position
 			);
 
 		return JLayoutHelper::render($this->renderLabelLayout, $displayData);

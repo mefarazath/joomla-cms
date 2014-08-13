@@ -1055,7 +1055,7 @@ abstract class JModelAdmin extends JModelForm
 	{
 		$dispatcher = JEventDispatcher::getInstance();
 		$table = $this->getTable();
-
+   
 		if ((!empty($data['tags']) && $data['tags'][0] != ''))
 		{
 			$table->newTags = $data['tags'];
@@ -1125,11 +1125,9 @@ abstract class JModelAdmin extends JModelForm
 			return false;
 		}
 
-		$pkName = $table->getKeyName();
-
-		if (isset($table->$pkName))
+		if (isset($table->$key))
 		{
-			$this->setState($this->getName() . '.id', $table->$pkName);
+			$this->setState($this->getName() . '.id', $table->$key);
 		}
 		$this->setState($this->getName() . '.new', $isNew);
 
