@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="Webservice001Test" file="C:\xampp\htdocs\joomla-cms\tests\system\suite\com_webservices\Webservice001Test.php" tests="2" assertions="47" failures="0" errors="0" time="89.703907">
+    <testcase name="testwebServiceComponent" class="Webservice001Test" file="C:\xampp\htdocs\joomla-cms\tests\system\suite\com_webservices\Webservice001Test.php" line="20" assertions="9" time="20.427097"/>
+    <testcase name="testAddWebservice" class="Webservice001Test" file="C:\xampp\htdocs\joomla-cms\tests\system\suite\com_webservices\Webservice001Test.php" line="37" assertions="38" time="69.276810"/>
+  </testsuite>
+</testsuites>

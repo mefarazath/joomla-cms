@@ -18,11 +18,13 @@ JHtml::_('behavior.tooltip');
     <?php
        foreach($this->items as $i=>$item):
            
-            echo JHtmlGrid::id($i, $item->name);
+        
+
+            echo JHtmlGrid::id($i,$item->name);
          // echo $item->id."  ".$item->name."   ".$item->publicKey."<br>";
-            echo " ".$item->name . "        " . $item->publicKey;
+            echo " ".$item->name . "        " . $item->publicKey.' / '.$item->privateKey.' / '.$item->passPhrase;
             echo "<br>";
-            
+  
     endforeach;
         ?>
        <div>
