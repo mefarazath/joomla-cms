@@ -40,7 +40,7 @@ class MenuManager0001Test extends JoomlaWebdriverTestCase
 	public function constructor_OpenEditScreen_MenuEditOpened()
 	{
 		$this->menuManagerPage->clickButton('toolbar-new');
-
+                
 		/* @var $menuEditPage MenuEditPage */
 		$menuEditPage = $this->getPageObject('MenuEditPage');
 // 		$menuEditPage->printFieldArray($menuEditPage->getAllInputFields());

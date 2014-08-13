@@ -112,7 +112,7 @@ class JControllerAdmin extends JControllerLegacy
 
 		// Get items to remove from the request.
 		$cid = JFactory::getApplication()->input->get('cid', array(), 'array');
-
+                print_r(JFactory::getApplication()->input);    
 		if (!is_array($cid) || count($cid) < 1)
 		{
 			JLog::add(JText::_($this->text_prefix . '_NO_ITEM_SELECTED'), JLog::WARNING, 'jerror');
