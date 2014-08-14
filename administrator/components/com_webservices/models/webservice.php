@@ -37,22 +37,26 @@ class WebServicesModelWebService extends JModelAdmin
         {
            //check the previous session for entered data
            $data = JFactory::getApplication()->getUserState('com_webservices.edit.webservice.data', array());
-
-           if (empty($data)) {
+          // echo "data from session";
+          // print_r($data);
+           if (empty($data)) 
+           {
                $data = $this->getItem();
            }
-
-           print_r($data);
+        //   print_r($data);
            return $data;
-           
-         }
+              
+        }
 
         function save($data) 
         {
 
            // write the service record to the database {this would be removed later}
            parent::save($data);
-
+          
+           $name = JFactory::getApplication()->input->get('name','');
+           print_r($name);
+           
            //load the file to registry object
            $registry = new JRegistry;
 
@@ -60,14 +64,18 @@ class WebServicesModelWebService extends JModelAdmin
                $registry->loadFile('webservices.json');
            }
 
-           //check whether a new record is to be saved
-           //   $isNew = $registry->exists('webservices.'.$data[name]);
-
+           // name of the path to be saved in the file           
            $path = $data[name];
-
-           //  array_shift($data);
+           
+           //check whether a service has been just renamed 
+           $renamed = $path != $name ? true : false;
+           
+           if($renamed)
+           {
+               $this->delete($name);
+           }
+           
            $registry->set($path, $data);
-
            $result = file_put_contents('webservices.json', $registry->toString()) ? true : false;
 
            return $result;
@@ -88,8 +96,8 @@ class WebServicesModelWebService extends JModelAdmin
             }
             
             $registry->loadFile('webservices.json');
-            
-            
+           // $services = $registry->toArray();
+         
             foreach($services as $i)
             {
                  if(!$registry->exists($i)){
@@ -99,12 +107,12 @@ class WebServicesModelWebService extends JModelAdmin
                  $registry->set($i,'');
                  
             }
-             
+            
             file_put_contents('webservices.json', $registry);
             return true;
             
         }
-
- 
-
+        
+    
+        
 }

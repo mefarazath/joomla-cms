@@ -39,8 +39,32 @@ class WebServicesControllerWebService extends JControllerForm
               
     } 
     
-    function save($key = null, $urlVar = null) {
-        parent::save($key, $urlVar);
+    
+    function edit() {     
+        $app = JFactory::getApplication();
+        $cid = $app->input->get('cid',array(),'array');
+        
+        $context = 'com_webservices.edit.webservice';
+        
+        $recordId = $cid[0];
+
+        $registry = Registry::getInstance(1)->loadFile('webservices.json');
+        
+        $service = $registry->get($recordId,array());
+        
+        $data = empty($service)? null : $service;
+        
+        $this->holdEditId($context,$cid[0]);
+        $app->setUserState($context . '.data',$data);
+        
+        $this->setRedirect(
+                            JRoute::_(
+                                    'index.php?option=' . $this->option . '&view=' . $this->view_item.
+                                    $this->getRedirectToItemAppend($recordId,'name'), false)
+                           );
+        
+
+        return true;
     }
     
 }  

@@ -415,9 +415,9 @@ class JControllerForm extends JControllerLegacy
 		else
 		{
 			// Check-out succeeded, push the new record id into the session.
-			$this->holdEditId($context, $recordId);
-			$app->setUserState($context . '.data', null);
-
+			$this->holdEditId($context, $recordId);                       
+			$app->setUserState($context . '.data', null);  
+                      
 			$this->setRedirect(
 				JRoute::_(
 					'index.php?option=' . $this->option . '&view=' . $this->view_item
